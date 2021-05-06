@@ -82,7 +82,8 @@ macro(find_dependency_win)
   set(LZMA_LIBRARY_REL "${CURRENT_INSTALLED_DIR}/lib/lzma.lib" )
   set(LZMA_LIBRARY_DBG "${CURRENT_INSTALLED_DIR}/debug/lib/lzmad.lib" )
 
-  # Setup openssl libraries path
+  # Setup openssl libraries + include path
+  set(OPENSSL_INCLUDE_DIR "${CURRENT_INSTALLED_DIR}/include" )
   set(OPENSSL_LIBRARY_REL "${CURRENT_INSTALLED_DIR}/lib/libcrypto.lib ${CURRENT_INSTALLED_DIR}/lib/libssl.lib" )
   set(OPENSSL_LIBRARY_DBG "${CURRENT_INSTALLED_DIR}/debug/lib/libcrypto.lib ${CURRENT_INSTALLED_DIR}/debug/lib/libssl.lib" )
 

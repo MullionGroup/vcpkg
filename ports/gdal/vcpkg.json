@@ -1,12 +1,17 @@
 {
   "name": "gdal",
   "version-semver": "3.2.2",
+  "port-version": 1,
   "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
   "homepage": "https://gdal.org",
   "supports": "!arm",
   "dependencies": [
     "cfitsio",
-    "curl",
+    "openssl",
+    {
+      "name": "curl",
+      "features": [ "http2" ]
+    },
     "expat",
     "geos",
     "giflib",
@@ -14,6 +19,10 @@
     {
       "name": "json-c",
       "platform": "!windows"
+    },
+    {
+      "name": "tiff",
+      "features": [ "zstd" ]
     },
     "libgeotiff",
     "liblzma",
