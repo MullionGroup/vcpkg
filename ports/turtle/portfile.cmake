@@ -1,0 +1,25 @@
+#header-only library
+
+vcpkg_from_github(
+  OUT_SOURCE_PATH SOURCE_PATH
+  REPO mat007/turtle
+  REF bbe01e6d9d21ff7075aba782434185a8339d44dd #1.3.2
+  SHA512 eac30747737dc8cad27478b441d8bd546de1ff6876c7aa35835d330d88f8b515034e408245019453464b24fd5b1859562525ed8602d4b66486f4833352866a0f
+  HEAD_REF master
+)
+
+vcpkg_configure_cmake(
+    SOURCE_PATH ${SOURCE_PATH}
+    PREFER_NINJA
+    OPTIONS
+      -DBUILD_TESTING=OFF
+)
+
+vcpkg_install_cmake()
+
+vcpkg_fixup_cmake_targets(CONFIG_PATH lib/cmake/turtle)
+
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
+file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug ${CURRENT_PACKAGES_DIR}/lib)
+
+file(INSTALL ${SOURCE_PATH}/LICENSE_1_0.txt DESTINATION ${CURRENT_PACKAGES_DIR}/share/${PORT} RENAME copyright)
